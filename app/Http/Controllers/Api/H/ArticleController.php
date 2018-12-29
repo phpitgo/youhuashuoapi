@@ -18,7 +18,7 @@ class ArticleController extends Controller
         //
         $articles = Article::paginate(10);
         $seep = microtime(true) - LARAVEL_START;
-        return compact('article', 'seep');
+        return compact('articles', 'seep');
     }
 
     /**
