@@ -18,6 +18,6 @@ class Article extends Model
 
     public function getSubContentAttribute()
     {
-    	return str_limit($this->attributes['content']);
+    	return str_limit($this->attributes['content'], 200, '......');
     }
 }
