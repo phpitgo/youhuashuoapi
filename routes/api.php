@@ -17,4 +17,4 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
-Route::resource('article', 'ArticleController');
+Route::resource('article', 'Api\H\ArticleController');
