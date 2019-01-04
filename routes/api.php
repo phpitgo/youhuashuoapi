@@ -21,6 +21,6 @@ use Illuminate\Http\Request;
 
 Route::group(['prefix' => 'h', 'middleware' => ['switchguard'], ], function()
 {
-	Route::resource('article', 'Api\H\ArticleController');
+	Route::resource('articles', 'Api\H\ArticleController');
     Route::resource('register', 'Api\H\RegisterController');
 });
