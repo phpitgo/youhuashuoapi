@@ -45,6 +45,11 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
+        'h' => [
+            'driver' => 'token',
+            'provider' => 'h',
+        ],
+
     ],
 
     /*
@@ -74,6 +79,10 @@ return [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+        'h' => [
+            'driver' => 'eloquent',
+            'model' => App\User::class,  //这里是所要验证的表所对应的模型  重要
+        ],
     ],
 
     /*

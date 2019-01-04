@@ -17,4 +17,10 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
-Route::resource('article', 'Api\H\ArticleController');
+
+
+Route::group(['prefix' => 'h', 'middleware' => ['switchguard'], ], function()
+{
+	Route::resource('article', 'Api\H\ArticleController');
+    Route::resource('register', 'Api\H\RegisterController');
+});
