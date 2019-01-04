@@ -20,7 +20,7 @@ class SwitchGuard
         $prefix = $request->route()->getPrefix();
         switch ($prefix){
             case 'api/h':
-                Config::set('jwt.secret', Config::get('jwt.secret_b'));  //Config::get('jwt.secret_b')在配置文件中设置
+                Config::set('jwt.secret', Config::get('jwt.secret_h'));  //Config::get('jwt.secret_h')在配置文件中设置
                 Config::set('auth.defaults.guard', 'h');  // 这里就是让他走 guards 的 b 子项 之后会走 providers->b->'model' => App\Model\BUser::class,  //这里是所要验证的表所对应的模型
                 break;
 

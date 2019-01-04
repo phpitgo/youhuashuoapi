@@ -32,6 +32,12 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'password', 'remember_token',
     ];
 
+    protected $attributes = [
+        'email' => '',
+    ];
+
+
+
     public function getJWTIdentifier()
     {
         return $this->getKey(); // Eloquent model method
