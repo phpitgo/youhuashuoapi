@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\H;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use Validator;
 
 class RegisterController extends Controller
 {
@@ -43,7 +44,7 @@ class RegisterController extends Controller
         // 验证
         $register = $request->only('name', 'password');
         $validator = Validator::make($register, [
-            'name' => 'Min:3|String|Required|Unique:b_users',
+            'name' => 'Min:3|String|Required|Unique:users',
             'password' => 'Min:6|String|Required'
         ],[
             'name.required' => '用户名必填',
@@ -55,8 +56,8 @@ class RegisterController extends Controller
 
         if ($validator->fails()) {
             return response()->json([
-                'code' => 0,
-                'message' => '',
+                'code' => 422,
+                'message' => $validator->errors()->first(),
                 'data' => $validator->errors()
             ]);
         }
