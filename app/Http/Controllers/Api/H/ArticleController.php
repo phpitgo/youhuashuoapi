@@ -17,7 +17,11 @@ class ArticleController extends Controller
     {
         //
         $articles = Article::paginate(10);
-        return compact('articles');
+        return response()->json([
+            'code' => 0,
+            'message' => '成功',
+            'data' => compact('articles')
+        ]);
     }
 
     /**
@@ -47,9 +51,14 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Article $article)
     {
         //
+        return response()->json([
+            'code' => 0,
+            'message' => '成功',
+            'data' => compact('article')
+        ]);
     }
 
     /**
