@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Api\H;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\User;
+use Tymon\JWTAuth\Facades\JWTAuth;
+use Illuminate\Http\Request;
 use Validator;
+use App\User;
 
 class RegisterController extends Controller
 {
@@ -64,8 +65,8 @@ class RegisterController extends Controller
         // 加密密码
         $register['password'] = bcrypt($register['password']);
         // 入库
-        $buser = User::create($register);
-        if($buser){
+        $user = User::create($register);
+        if($user){
             // 生成token
             $token = JWTAuth::attempt($request->only('name', 'password'));
             if(!$token){
