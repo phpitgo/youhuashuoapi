@@ -63,6 +63,7 @@ class Kernel extends HttpKernel
 
         // 开发添加
         'switchguard' => \App\Http\Middleware\SwitchGuard::class,
+        'auth.jwt' => \App\Http\Middleware\AuthJwt::class,
     ];
 
     /**
