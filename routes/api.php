@@ -21,6 +21,9 @@ use Illuminate\Http\Request;
 
 Route::group(['prefix' => 'h', 'middleware' => ['switchguard'], ], function()
 {
-	Route::resource('articles', 'Api\H\ArticleController');
     Route::resource('register', 'Api\H\RegisterController');
+	Route::group(['middleware' => ['auth.jwt'], ], function()
+	{
+		Route::resource('articles', 'Api\H\ArticleController');
+	});
 });
