@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\H;
 
 use Illuminate\Http\Request;
 use App\Model\Article;
+use App\Model\UserArticle;
 use App\Http\Controllers\Controller;
 
 class ArticleController extends Controller
@@ -51,9 +52,14 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Article $article)
+    public function show(Request $request, Article $article)
     {
         //
+        $user = $request->user;
+        $userArticle = new UserArticle();
+        $userArticle->user_id = $user->id;
+        $userArticle->article_id = $article->id;
+        $userArticle->save();
         return response()->json([
             'code' => 0,
             'message' => '成功',
