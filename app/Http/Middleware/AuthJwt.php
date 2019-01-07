@@ -14,7 +14,6 @@ class AuthJWT
         //如果token有问题返回错误，前端自己清除cookie然后后重新走登陆。
 
         try {
-            var_dump($request->header()->toArray());die;
             // 如果用户登陆后的所有请求没有jwt的token抛出异常
             $user = JWTAuth::parseToken()->authenticate();
             $request->user = $user;
