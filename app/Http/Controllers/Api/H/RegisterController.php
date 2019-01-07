@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api\H;
 use App\Http\Controllers\Controller;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Illuminate\Http\Request;
+use App\Events\BadgeShipped;
+use App\Model\Badge;
 use Validator;
 use App\User;
 
@@ -77,11 +79,16 @@ class RegisterController extends Controller
                 ]);
             }
         }
-
+        $message = '注册成功';
+        $badge = Badge::find(1);
+        if($badge){
+            event( new BadgeShipped($user, $badge));
+            $message = '获得徽章：' . $badge->name;
+        }
         return response()->json([
             'code' => 0,
-            'message' => '注册成功',
-            'data' => compact('token')
+            'message' => $message,
+            'data' => compact('token', 'badge')
         ]);
     }
 
