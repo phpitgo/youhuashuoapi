@@ -48,4 +48,16 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     {
         return [];
     }
+
+    public function UserBadges()
+    {
+        return $this->belongsToMany('App\Model\Badge', 'user_badges', 'user_id', 'badge_id');
+    }
+
+    public function UserArticles()
+    {
+        return $this->belongsToMany('App\Model\Article', 'user_articles', 'user_id', 'article_id');
+    }
+
+
 }

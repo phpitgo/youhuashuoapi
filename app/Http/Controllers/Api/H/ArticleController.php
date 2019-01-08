@@ -56,10 +56,7 @@ class ArticleController extends Controller
     {
         //
         $user = $request->user;
-        $userArticle = new UserArticle();
-        $userArticle->user_id = $user->id;
-        $userArticle->article_id = $article->id;
-        $userArticle->save();
+        $user->userArticles()->save($article);
         return response()->json([
             'code' => 0,
             'message' => '成功',
