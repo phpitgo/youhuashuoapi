@@ -23,19 +23,19 @@ class AuthJWT
                     'code' => 1,
                     'message' => 'Token 已过期',
                     'data' =>(object)null,
-                ]);
+                ],401);
             }elseif ($e instanceof \Tymon\JWTAuth\Exceptions\TokenInvalidException){
                 return response()->json([
                     'code' => 2,
                     'message' => 'Token 无效',
                     'data' =>(object)null,
-                ]);
+                ],401);
             }else{
                 return response()->json([
                     'code' => 3,
                     'message' => 'Token 出错了',
                     'data' =>(object)null,
-                ]);
+                ],401);
             }
         }
         return $next($request);
