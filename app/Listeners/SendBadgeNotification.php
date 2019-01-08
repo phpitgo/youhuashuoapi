@@ -28,9 +28,8 @@ class SendBadgeNotification
     public function handle(BadgeShipped $event)
     {
         //
-        $userbadge = new UserBadge();
-        $userbadge->user_id = $event->user->id;
-        $userbadge->badge_id = $event->badge->id;
-        $userbadge->save();
+        $user = $event->user;
+        $badge = $event->badge;
+        $user->userBadges()->save($badge);
     }
 }
